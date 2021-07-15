@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Moorits Mihkel Muru, 2022 UT Tartu Observatory
 
 from bisous_slurm_job_submitter import submit_multiple_runs
