@@ -3,6 +3,9 @@
 # Moorits Mihkel Muru 2021 Tartu Observatory
 # Script for bootstrapping sbatch job of bisous ultimates processes with different inputs
 
+# TODO: Make it read input from separate file
+# TODO: Generate log file
+
 """
 Usage:
 submit_multiple_run(maxruns,
@@ -166,8 +169,33 @@ def submit_multiple_runs(maxruns,
 ###                    ###
 ##########################
 
-# TODO: Make it read input from separate file
-# submit_multiple_runs(maxruns, run_name, config, jobname, inputs)
+"""
+Usage:
+submit_multiple_run(maxruns,
+                    run_name,
+                    original_config_file,
+                    slurm_jobname,
+                    input_file_base = None,
+                    slurm_memory = "2GB",
+                    slurm_time = "8-00:00:00")
+
+maxruns - number of last run (starts from 1)
+run_name - name used for output and configs folder
+    e.g "testrun"
+original_config_file - name of base config file in configs folder
+    e.g "bisous_ultimate_testrun_config.ini"
+input_file_base - name of input file without the number (001) and file extension in data folder,
+                  if left empty, script will use only one original config file
+    e.g "testinputs/test_input_"
+slurm_jobname - name of the slurm jobs (max length 5 chars)
+    e.g "test_"
+
+Folder structure:
+    bisous
+    ├── configs
+    ├── data
+    └── output
+"""
 
 if __name__ == "__main__":
     submit_multiple_runs(80, "sigma5_spec10_12jul21", "bisous_ultimate_config_zdisp_sigma5_spec10percent_12jul21.ini", "5f10_", "zdisp_inputs_sigma5_spec10percent/input_gal_random_zdisp_sigma5_specobj10percent_run") 
