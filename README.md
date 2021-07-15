@@ -19,6 +19,9 @@ In addition, user can provide specific slurm memory and time limits.
 If the script is used to submit Bisous jobs each with a different input file, then the input file base name has to be provided.
 The script is creates folders for output, and logs, but prompts when the output folder already exists to avoid accidental overwriting.
 If different input files are used, the script also creates speparate folders for generated config files.
+
+For installation, I suggest to clone the repo and make a softlink of `run_bisous.py` to the `bisous` directory.
+
 ## Usage/Examples
 
 ```
