@@ -149,7 +149,8 @@ def submit_multiple_runs(maxruns,
 
     # If the output folder does exist ask user confirmation for continuation, else create it.
     output_dir = os.path.join("output", run_name)
-    if os.path.exists(output_dir):
+    output_exists = os.path.exists(output_dir)
+    if output_exists:
         cont = input("The output folder already exists. Do you want to continue? (y)/n: ")
         answers = ("y", "yes", "")
         if cont.lower() not in answers:
@@ -182,4 +183,23 @@ def submit_multiple_runs(maxruns,
                           slurm_time,)
         time.sleep(0.1)
     print(f"Submitted {maxruns} bisous run jobs each with different input file.")
+    return True
+
+def logging(logfile,
+            output_exists,
+            maxruns,
+            run_name,
+            original_config_file,
+            slurm_jobname,
+            input_file_base,
+            slurm_memory,
+            slurm_time):
+    # TODO:
+    # 1. Check if the log file exists, create it if need
+    # 2. Open the file and append to it
+    # 3. Write current datetime
+    # 4. Indicate if the run is testrun
+    # 5. Write the options used to run `submit_multiple_runs`
+    # 6. Write if the output folder was created or not
+    # 7. Insert 2 empty lines
     return True
