@@ -36,6 +36,7 @@ Folder structure:
 import time
 import subprocess as sp
 import os
+from datetime import datetime
 
 def usage():
     print('''
@@ -194,10 +195,18 @@ def logging(logfile,
             input_file_base,
             slurm_memory,
             slurm_time):
+    # Open the file for appending logs, create it if needed
+    logsfile = open(os.path.join(os.getcwd(), "logs", logfile), "a")
+
+    # Write current datetime dd/mm/yyyy HH:MM:SS
+    logsfile.write("[ " + datetime.now().strftime("%d/%m/%Y %H:%M:%S") + "  ]")
+
+    # Indicate if the run is a testrun
+    if slurm_jobname.startswith("test"):
+        logsfile.write("TESTRUN")
+
+    
     # TODO:
-    # 1. Check if the log file exists, create it if need
-    # 2. Open the file and append to it
-    # 3. Write current datetime
     # 4. Indicate if the run is testrun
     # 5. Write the options used to run `submit_multiple_runs`
     # 6. Write if the output folder was created or not
