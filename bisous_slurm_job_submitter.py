@@ -205,9 +205,14 @@ def logging(logfile,
     if slurm_jobname.startswith("test"):
         logsfile.write("TESTRUN")
 
-    
+    logsfile.write(f"    bisous run name:   {run_name}")
+    logsfile.write(f"    number of runs:    {maxruns}")
+    logsfile.write(f"    slurm job name:    {slurm_jobname}")
+    logsfile.write(f"    config file name:  {original_config_file}")
+    logsfile.write(f"    input file name:   {input_file_base}")
+    logsfile.write(f"    slurm memory:      {slurm_memory}")
+    logsifle.write(f"    slurm timelimit:   {slurm_time}")
     # TODO:
-    # 4. Indicate if the run is testrun
     # 5. Write the options used to run `submit_multiple_runs`
     # 6. Write if the output folder was created or not
     # 7. Insert 2 empty lines
